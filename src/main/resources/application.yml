@@ -1,0 +1,15 @@
+spring:
+  datasource:
+    url: jdbc:postgresql://dpg-ctgp0mbgbbvc738tmv80-a.oregon-postgres.render.com:5432/user_db_in46
+    username: miller
+    password: NJBwdOuj0nbsqg7dbitKH3aA3bhKZtiM
+    driver-class-name: org.postgresql.Driver
+  jpa:
+    hibernate:
+      ddl-auto: update
+    show-sql: true
+    properties:
+      hibernate:
+        format_sql: true
+    database: postgresql
+    database-platform: org.hibernate.dialect.PostgreSQLDialect
