@@ -22,7 +22,14 @@ public class User implements UserDetails {
     @Id
     @GeneratedValue
     private int id;
+
+    public int getId() {
+        return id;
+    }
+
     private String firstName;
+
+
     private String email;
     private String password;
 
@@ -69,4 +76,12 @@ public class User implements UserDetails {
     public boolean isEnabled() {
         return true;
     }
+    public String getFirstName() {
+        return firstName;
+    }
+
+    public void setFirstName(String firstName) {
+        this.firstName = firstName;
+    }
+
 }
