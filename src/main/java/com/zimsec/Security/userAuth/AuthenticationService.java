@@ -1,6 +1,5 @@
 package com.zimsec.Security.userAuth;
 
-import lombok.RequiredArgsConstructor;
 import org.springframework.security.authentication.AuthenticationManager;
 import org.springframework.security.authentication.UsernamePasswordAuthenticationToken;
 import org.springframework.security.crypto.password.PasswordEncoder;
@@ -21,14 +20,20 @@ public class AuthenticationService {
     }
 
     public AuthenticationResponseDto register(UserCreateRequestDto request) {
-        var user = new User(
-                request.getFirstname(),
-                request.getEmail(),
-                passwordEncoder.encode(request.getPassword()),
-                ERole.USER);
-        repository.save(user);
-        var jwtToken = jwtService.generateToken(user);
-        return new AuthenticationResponseDto(jwtToken);
+        try {
+            var user = new User(
+                    request.getFull_name(),
+                    request.getId_number(),
+                    request.getEmail(),
+                    request.getPhone_number(),
+                    passwordEncoder.encode(request.getPassword()));
+            repository.save(user);
+            var jwtToken = jwtService.generateToken(user);
+            return new AuthenticationResponseDto(jwtToken);
+        }
+        catch (IllegalArgumentException ex){
+            throw new IllegalArgumentException();
+        }
     }
 
     public AuthenticationResponseDto authenticate(AuthenticationRequest request) {

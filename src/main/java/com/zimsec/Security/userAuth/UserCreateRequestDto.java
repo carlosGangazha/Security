@@ -10,31 +10,23 @@ import lombok.NoArgsConstructor;
 @AllArgsConstructor
 @NoArgsConstructor
 public class UserCreateRequestDto {
-    private String firstname;
+    private String full_name;
+    private String id_number;
     private String email;
+    private String phone_number;
     private String password;
 
-    public String getFirstname() {
-        return firstname;
+    public String getFull_name() {
+        return full_name;
     }
-
-    public void setFirstname(String firstname) {
-        this.firstname = firstname;
-    }
-
     public String getEmail() {
         return email;
     }
-
-    public void setEmail(String email) {
-        this.email = email;
-    }
-
+    public String getId_number(){return id_number;}
     public String getPassword() {
         return password;
     }
-
-    public void setPassword(String password) {
-        this.password = password;
+    public String getPhone_number() {
+        return phone_number;
     }
 }

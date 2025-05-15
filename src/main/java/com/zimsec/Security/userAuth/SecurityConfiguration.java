@@ -28,11 +28,18 @@ public class SecurityConfiguration {
                 .csrf()
                 .disable()
                 .authorizeHttpRequests()
+                .requestMatchers(
+                        "/v3/api-docs/**",
+                        "/swagger-ui/**",
+                        "/swagger-ui.html"
+                ).permitAll()
                 // Permit access to authenticate and register endpoints first
                 .requestMatchers("/api/v1/auth/authenticate", "/api/v1/auth/register")
                 .permitAll()
                 // Ensure the rest of the paths in the /api/v1/auth/** require authentication
                 .requestMatchers("/api/v1/auth/**")
+                .authenticated()
+                .requestMatchers("/bookings/**")
                 .authenticated()
                 // For any other path, require authentication
                 .anyRequest()
@@ -46,5 +53,4 @@ public class SecurityConfiguration {
 
         return http.build();
     }
-
 }

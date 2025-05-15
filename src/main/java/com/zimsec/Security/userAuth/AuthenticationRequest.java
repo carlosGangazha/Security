@@ -12,6 +12,14 @@ import lombok.NoArgsConstructor;
 public class AuthenticationRequest {
     private String email;
     private String password;
+    private String role;
+
+    private void setRole(String role){
+        this.role = role;
+    }
+    private String setRole(){
+        return role;
+    }
 
     public String getEmail() {
         return email;

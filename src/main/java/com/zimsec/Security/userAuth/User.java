@@ -22,25 +22,28 @@ public class User implements UserDetails {
     @Id
     @GeneratedValue
     private int id;
+    private String fullName;
+    private String id_number;
+    private String email;
+    private String phone_number;
 
-    public int getId() {
-        return id;
+    public String getFullName() {
+        return fullName;
     }
 
-    private String firstName;
+    public void setFullName(String fullName) {
+        this.fullName = fullName;
+    }
 
-
-    private String email;
     private String password;
-
-    @Enumerated(EnumType.STRING)
     private ERole role;
 
-    public User(String firstname, String email, String encode, ERole o) {
-        this.firstName = firstname;
+    public User(String fullName, String id_number, String email, String phone_number, String password) {
+        this.fullName = fullName;
+        this.id_number = id_number;
         this.email = email;
-        this.password = encode;
-        this.role = o;
+        this.phone_number = phone_number;
+        this.password = password;
     }
 
     @Override
@@ -75,13 +78,6 @@ public class User implements UserDetails {
     @Override
     public boolean isEnabled() {
         return true;
-    }
-    public String getFirstName() {
-        return firstName;
-    }
-
-    public void setFirstName(String firstName) {
-        this.firstName = firstName;
     }
 
 }

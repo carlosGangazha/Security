@@ -2,7 +2,6 @@ package com.zimsec.Security.UserData;
 
 import com.zimsec.Security.userAuth.User;
 import com.zimsec.Security.userAuth.UserRepository;
-import lombok.RequiredArgsConstructor;
 import org.springframework.stereotype.Service;
 
 import java.util.List;
@@ -17,6 +16,6 @@ public class UserService {
 
     public List<UserResponseDto> getAllUsers(){
         List<User> users = userRepository.findAll();
-        return  users.stream().map( user -> new UserResponseDto(user.getFirstName(), user.getUsername())).toList();
+        return  users.stream().map( user -> new UserResponseDto(user.getFullName(), user.getUsername())).toList();
     }
 }
